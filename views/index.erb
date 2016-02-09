@@ -1,0 +1,26 @@
+<div id='header'>
+  <h1> Hello world! <h1>
+</div>
+
+<script>
+function httpGetAsync(theUrl, callback)
+{
+    var xmlHttp = new XMLHttpRequest();
+    xmlHttp.onreadystatechange = function() { 
+        if (xmlHttp.readyState == 4 && xmlHttp.status == 200)
+            callback(xmlHttp.responseText);
+    }
+    xmlHttp.open("GET", theUrl, true); // true for asynchronous 
+    xmlHttp.send(null);
+}
+
+function header_callback(responseText)
+{
+  var day = JSON.parse(responseText);
+  header.innerHTML = "<h1> Happy " + day['day'] + "!</h1>"
+}
+
+httpGetAsync('/day', header_callback);
+
+</script>
+
