@@ -1,6 +1,6 @@
 require 'sinatra'
 require 'json'
-require 'pry'
+# require 'pry'
 
 get '/' do
   erb :index
